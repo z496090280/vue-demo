@@ -1,12 +1,15 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-04-04 20:03:55
+ * @LastEditTime: 2021-04-04 14:53:06
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \vue-watermark\src\App.vue
+-->
+<script src="index.js"></script>
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/table">Table</router-link>
-    </div>
-    <router-view />
-
+    <img alt="Vue logo" src="./assets/logo.png">
     <Slot1>save</Slot1>
 
     <Slot2>
@@ -40,7 +43,6 @@
         <span v-if="!item.num">卖的真好，么得了</span>
       </template>
     </SlotHoc>
-
   </div>
 </template>
 
@@ -77,12 +79,13 @@
           lastName: 'wang'
         },
         count: 0,
-        parentCount: 0,
+        parentCount: 0
       }
     }
   }
   new Watermarkly({ text: '水印' });
 </script>
+
 <style>
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -90,18 +93,6 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-  }
-
-  #nav {
-    padding: 30px;
-  }
-
-  #nav a {
-    font-weight: bold;
-    color: #2c3e50;
-  }
-
-  #nav a.router-link-exact-active {
-    color: #42b983;
+    margin-top: 60px;
   }
 </style>
