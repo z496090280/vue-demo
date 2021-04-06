@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-04-04 21:06:47
- * @LastEditTime: 2021-04-04 21:14:59
- * @LastEditors: your name
+ * @LastEditTime: 2021-04-06 15:23:29
+ * @LastEditors: daping
  * @Description: In User Settings Edit
  * @FilePath: \vue-watermark\src\router\index.js
  */
@@ -10,6 +10,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Table from '../views/Table.vue'
+import Form from '../views/Form.vue'
 
 Vue.use(VueRouter)
 
@@ -32,6 +33,11 @@ const routes = [
     name: 'Table',
     component: Table
   },
+  {
+    path: '/form',
+    name: 'Form',
+    component: Form
+  }
 ]
 
 const router = new VueRouter({

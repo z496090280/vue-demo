@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-04 21:14:53
- * @LastEditTime: 2021-04-05 00:39:12
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-04-06 15:31:52
+ * @LastEditors: daping
  * @Description: In User Settings Edit
  * @FilePath: \vue-watermark\src\views\Table.vue
 -->
@@ -13,7 +13,7 @@
         <template slot-scope="scope">
           <span v-show="!scope.row.isEdit">{{ scope.row['old' + item.prop] }}</span>
           <span v-show="scope.row.isEdit">
-            <input type="text" v-model="scope.row[item.prop]">
+            <el-input type="text" v-model="scope.row[item.prop]" />
           </span>
         </template>
       </el-table-column>
@@ -26,14 +26,15 @@
         </el-table-column>
       </slot>
     </el-table>
-
+    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage"
+      :page-sizes="pageSizes" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total">
+    </el-pagination>
   </div>
 </template>
 
 <script>
-  import { Table } from 'element-ui'
   export default {
-    name: 'TrTable',
+    name: 'DapingTable',
     data() {
       return {
         color1: '#409EFF',
@@ -48,13 +49,36 @@
       colsData: {
         type: Array,
         required: true
-      }
+      },
+      currentPage: {
+        type: Number,
+      },
+      pageSizes: {
+        type: Array,
+        default: () => [10, 20, 50, 100]
+      },
+      pageSize: {
+        type: Number,
+        default: 10
+      },
+      total: {
+        type: Number,
+        default: 100
+      },
     },
     mounted() {
       // console.log(this.tableData, '接受')
     },
 
     methods: {
+      handleSizeChange(val) {
+        // console.log(`每页 ${val} 条`);
+        this.$emit('handleSizePage', val)
+      },
+      handleCurrentChange(val) {
+        // console.log(`当前页: ${val}`);
+        this.$emit('handleCurrentPage', val)
+      }
     }
   }
 </script>

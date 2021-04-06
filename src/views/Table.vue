@@ -1,14 +1,16 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-04 21:14:53
- * @LastEditTime: 2021-04-05 00:54:22
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-04-06 15:17:41
+ * @LastEditors: daping
  * @Description: In User Settings Edit
  * @FilePath: \vue-watermark\src\views\Table.vue
 -->
 <template>
   <div class="tableParent">
-    <edit-table :colsData='colsData' :tableData='tableData' :tableData.sync="tableData">
+    <edit-table :colsData='colsData' :tableData='tableData' :tableData.sync="tableData"
+      @handleCurrentPage="setCurrentPage" @handleSizePage="setSizePage" :total="form.total"
+      :currentPage="form.currentPage" :pageSize="form.pageSize">
       <template #after>
         <el-table-column label="操作">
           <template slot-scope="scope">
@@ -37,7 +39,12 @@
           { prop: 'age', label: 'age' },
           { prop: 'job', label: 'job' }
         ],
-        tableData: []
+        tableData: [],
+        form: {
+          currentPage: 2,
+          pageSize: 20,
+          total: 200
+        }
       }
     },
     mounted() {
@@ -48,6 +55,12 @@
     },
 
     methods: {
+      setCurrentPage(e) {
+        console.log(e, 'currnetPage')
+      },
+      setSizePage(e) {
+        console.log(e, 'setSizePage')
+      },
       getList() {
         var _this = this
         this.$axios.get('/parameter/query')
