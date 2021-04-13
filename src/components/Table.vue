@@ -1,16 +1,17 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-04 21:14:53
- * @LastEditTime: 2021-04-06 15:31:52
+ * @LastEditTime: 2021-04-10 14:40:37
  * @LastEditors: daping
  * @Description: In User Settings Edit
  * @FilePath: \vue-watermark\src\views\Table.vue
 -->
 <template>
   <div class="table">
-    <el-table :data=" tableData" ref="refTable" v-bind="$attrs" style="width: 100%">
+    <el-table :data="tableData" ref="refTable" v-bind="$attrs" style="width: 100%">
       <el-table-column v-for="(item, idx) in colsData" :label="item.label" :prop="item.prop" :key="idx">
         <template slot-scope="scope">
+          <!-- <span v-if="item.render">{{item.render(scope.row)}}</span> -->
           <span v-show="!scope.row.isEdit">{{ scope.row['old' + item.prop] }}</span>
           <span v-show="scope.row.isEdit">
             <el-input type="text" v-model="scope.row[item.prop]" />

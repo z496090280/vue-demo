@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-04 21:14:53
- * @LastEditTime: 2021-04-06 15:17:41
+ * @LastEditTime: 2021-04-07 14:07:22
  * @LastEditors: daping
  * @Description: In User Settings Edit
  * @FilePath: \vue-watermark\src\views\Table.vue
@@ -36,7 +36,7 @@
         colsData: [
           { prop: 'id', label: 'id' },
           { prop: 'name', label: 'name' },
-          { prop: 'age', label: 'age' },
+          { prop: 'age', label: 'age', render: row => `${row.age}岁` },
           { prop: 'job', label: 'job' }
         ],
         tableData: [],
